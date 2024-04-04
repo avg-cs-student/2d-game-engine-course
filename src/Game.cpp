@@ -17,8 +17,8 @@ void Game::Initialize() {
 
 	SDL_DisplayMode displayMode;
 	SDL_GetCurrentDisplayMode(0, &displayMode);
-	windowWidth = 800; //displayMode.w;
-	windowHeight = 600; //displayMode.h;
+	windowWidth = 1920; //displayMode.w;
+	windowHeight = 1080; //displayMode.h;
 
 	window = SDL_CreateWindow(
 		NULL,
@@ -78,7 +78,7 @@ glm::vec2 playerVelocity;
 
 void Game::Setup() {
 	playerPosition = glm::vec2(10.0, 20.0);
-	playerVelocity = glm::vec2(1.0, 0.0);
+	playerVelocity = glm::vec2(100.0, 50.0);
 }
 
 void Game::Update() {
@@ -87,11 +87,14 @@ void Game::Update() {
 		SDL_Delay(timeToWait);
 	}
 
+	// Difference in ticks since the last frame, converted to seconds
+	double deltaTime_s = (SDL_GetTicks() - previousFrameMs) / 1'000.0;
+
 	// If we are too fast, waste time until we reach target FPS
 	previousFrameMs = SDL_GetTicks();
 
-	playerPosition.x += playerVelocity.x;
-	playerPosition.y += playerVelocity.y;
+	playerPosition.x += playerVelocity.x * deltaTime_s;
+	playerPosition.y += playerVelocity.y * deltaTime_s;
 }
 
 void Game::Render() {

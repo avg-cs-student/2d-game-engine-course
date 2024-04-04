@@ -4,15 +4,15 @@
 #include <glm/glm.hpp>
 #include <iostream>
 
-static constexpr int FPS = 30;
-static constexpr int MILLISECONDS_PER_FRAME = 1'000 / FPS;
+static constexpr int FPS = 600;
+static constexpr int MILLISECONDS_PER_FRAME = 1000.0 / FPS;
 
 class Game {
 private:
 	bool running = false;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
-	int previousFrameMs;
+	int previousFrameMs = 0;
 
 public:
 	Game();
