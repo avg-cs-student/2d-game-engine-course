@@ -1,12 +1,13 @@
 #include "Game.h"
 
-Game::Game() {
-	std::cout << "Game constructor called!" << std::endl;
+Game::Game(std::unique_ptr<Logger> logger_) : logger(std::move(logger_)) {
+	logger->Log("Game constructor called!");
+
 	running = true;
 }
 
 Game::~Game() {
-	std::cout << "Game destructor called!" << std::endl;
+	logger->Log("Game destructor called!");
 }
 
 void Game::Initialize() {
