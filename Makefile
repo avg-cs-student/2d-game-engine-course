@@ -9,7 +9,7 @@ INCLUDE_PATH = -I"./libs/"
 
 SRC          = src/*.cpp \
                src/game/*.cpp \
-               src/logger/*.cpp
+	       src/ECS/*.cpp
 
 LFLAGS       = -lSDL2 \
 	       -lSDL2_image \

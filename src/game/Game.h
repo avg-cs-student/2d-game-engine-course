@@ -6,6 +6,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "../logger/Logger.h"
+#include "../ECS/ECS.h"
 
 static constexpr int FPS = 600;
 static constexpr int MILLISECONDS_PER_FRAME = 1000.0 / FPS;
